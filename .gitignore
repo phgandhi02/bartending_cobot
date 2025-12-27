@@ -6,6 +6,13 @@ build/
 *.dox
 *.wikidoc
 
+# VSCode autogen stuff
+.vscode/browse.vc.db
+.vscode/browse.vc.db-shm
+.vscode/browse.vc.db-wal
+c_cpp_properties.json
+settings.json
+
 # eclipse stuff
 .project
 .cproject

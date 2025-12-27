@@ -10,5 +10,3 @@ set(manipulator_description_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
 include("${manipulator_description_DIR}/export_manipulator_description.cmake")
 
 # These are IMPORTED targets created by manipulator_descriptionTargets.cmake
-
-
