@@ -1,7 +1,7 @@
 # ROS2-manipulator-viz-tool
 This is a simple tool for visualizing the data published from a manipulator in an intuitive way, based on the principles illustrates in Tufte's book Envisioning Information.
 
-The tool will visualize Dijkstra's algorithm in an intuitive way for showing how motion planning algorithms work. The tool will visualize the manipulator, obstacles, and a cost-heat map to provide insights on how the open and closed lists were calculated. The tool will also visualize the final path taken by the manipulator with a "lightning bolt" effect to highlight the final path. 
+The tool will visualize Dijkstra's algorithm in an intuitive way for showing how motion planning algorithms work. The tool will visualize the manipulator, obstacles, and a cost-heat map to provide insights on how the open and closed lists were calculated. The tool will also visualize the final path taken by the manipulator with a "lightning bolt" effect to highlight the final path.
 
 ## Dev Setup
 The following pre-requisites are necessary to run and develop the visualization tool:
