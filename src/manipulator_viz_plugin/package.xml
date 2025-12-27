@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>ros2_viz_tool</name>
+  <name>manipulator_viz_plugin</name>
   <version>0.0.0</version>
   <description>custom visualization tool for visualizing the data that is received from the ROS2 network</description>
   <maintainer email="phgandh2@ncsu.edu">Prem Gandhi</maintainer>

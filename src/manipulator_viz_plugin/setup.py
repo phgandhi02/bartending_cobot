@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'ros2_viz_tool'
+package_name = 'manipulator_viz_plugin'
 
 setup(
     name=package_name,
@@ -24,7 +24,6 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'run_viz = ros2_viz_tool.run_viz:main'
         ],
     },
 )

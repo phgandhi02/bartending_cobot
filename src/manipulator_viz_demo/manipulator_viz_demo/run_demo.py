@@ -1,5 +1,5 @@
 def main():
-    print('Hi from ros2_viz_tool.')
+    print('Hi from manipulator_viz_demo.')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,14 @@
+# - Config file for the manipulator_description package
+# It defines the following variables
+#  manipulator_description_INCLUDE_DIRS - include directories for FooBar
+#  manipulator_description_LIBRARIES    - libraries to link against
+#  manipulator_description_EXECUTABLE   - the bar executable
+
+set(manipulator_description_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+include("${manipulator_description_DIR}/export_manipulator_description.cmake")
+
+# These are IMPORTED targets created by manipulator_descriptionTargets.cmake
+
+
