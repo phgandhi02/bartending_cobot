@@ -1,4 +1,4 @@
-#include "manipulator_viz_plugin/manipulator_viz_tool.hpp"
+#include "manipulator_viz_plugin/manipulator_viz_plugin.hpp"
 
 namespace manipulator_viz_plugin
 {

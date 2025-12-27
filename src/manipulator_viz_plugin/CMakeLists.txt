@@ -12,7 +12,7 @@ find_package(ament_cmake_ros REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_library(manipulator_viz_tool src/manipulator_viz_tool.cpp)
+add_library(manipulator_viz_tool src/manipulator_viz_plugin.cpp)
 add_library(manipulator_viz_plugin::manipulator_viz_tool ALIAS manipulator_viz_tool)
 target_compile_features(manipulator_viz_tool PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 target_include_directories(manipulator_viz_tool PUBLIC
