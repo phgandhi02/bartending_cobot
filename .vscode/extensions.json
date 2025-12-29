@@ -1,6 +1,8 @@
 {
     "recommendations": [
         "ranch-hand-robotics.rde-ros-2",
-        "ms-python.python"
+        "ms-python.python",
+        "ms-python.autopep8",
+        "ms-python.pylint"
     ]
 }
