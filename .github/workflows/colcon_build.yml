@@ -1,0 +1,15 @@
+name: colcon build repo
+
+on: [push,pull_request]
+
+jobs:
+  build_and_test_ros2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: jazzy
+      - uses: ros-tooling/action-ros-ci@v0.4
+        with:
+          target-ros2-distro: jazzy
+          skip-tests: true
