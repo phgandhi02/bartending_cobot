@@ -31,6 +31,9 @@
   <depend>rclcpp</depend>
   <depend>rclcpp_lifecycle</depend>
   <exec_depend>rviz2</exec_depend>
+  <!-- Xacro used to simplify building URDF files  -->
+  <!-- More details here: https://wiki.ros.org/xacro -->
+  <exec_depend>xacro</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
