@@ -30,6 +30,10 @@
   <depend>pluginlib</depend>
   <depend>rclcpp</depend>
   <depend>rclcpp_lifecycle</depend>
+
+  <!-- ros2_control node for managing controllers -->
+  <!-- Brief explanation here: https://control.ros.org/jazzy/doc/getting_started/getting_started.html#controller-manager -->
+  <exec_depend>controller_manager</exec_depend>
   <exec_depend>rviz2</exec_depend>
   <!-- Xacro used to simplify building URDF files  -->
   <!-- More details here: https://wiki.ros.org/xacro -->
