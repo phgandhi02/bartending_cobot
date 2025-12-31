@@ -3,7 +3,7 @@
 <package format="3">
   <name>manipulator_bringup</name>
   <version>0.0.0</version>
-  <description>Demoros2_control simulation with 6Dof Manipulator.</description>
+  <description>Demo using ros2_control and Gazebo simulation with 6Dof Manipulator.</description>
 
   <maintainer email="phgandh2@ncsu.edu">Prem Gandhi</maintainer>
   <maintainer email="ljimenez@ennovatec.co">Luis Jimenez</maintainer>
