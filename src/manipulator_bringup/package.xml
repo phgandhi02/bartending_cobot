@@ -50,6 +50,9 @@
   and publishes the 3D poses of the robot links on the /tf topic, using a kinematic tree model
   of the robot -->
   <exec_depend>robot_state_publisher</exec_depend>
+  <!-- ros2controlcli provides CLI commands for managing ros2_control controllers -->
+  <!-- Detailed usage here: https://control.ros.org/master/doc/ros2_control/ros2controlcli/doc/userdoc.html -->
+  <exec_depend>ros2controlcli</exec_depend>
   <exec_depend>rviz2</exec_depend>
   <!-- Xacro used to simplify building URDF files  -->
   <!-- More details here: https://wiki.ros.org/xacro -->
