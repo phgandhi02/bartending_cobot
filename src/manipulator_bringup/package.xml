@@ -56,6 +56,9 @@
   <exec_depend>xacro</exec_depend>
   <!-- Pkg used for running launch files from CLI -->
   <exec_depend>ros2launch</exec_depend>
+  <!-- pkg for testing the ros2_controllers for correct, working output  -->
+  <!-- Code available here: https://github.com/ros-controls/ros2_controllers/tree/jazzy/ros2_controllers_test_nodes -->
+  <!-- <exec_depend>ros2_controllers_test_nodes</exec_depend> -->
 
   <export>
     <build_type>ament_cmake</build_type>
