@@ -40,6 +40,9 @@
   <!-- ros_gz_sim for launching gazebo from ros2 -->
   <!-- Basic usage doc: https://gazebosim.org/docs/latest/ros2_launch_gazebo/ -->
   <exec_depend>ros_gz_sim</exec_depend>
+  <!-- joint_state_broadcaster for publishing state_interfaces on /joint_states  -->
+  <!-- More details here: https://control.ros.org/jazzy/doc/ros2_controllers/joint_state_broadcaster/doc/userdoc.html -->
+  <exec_depend>joint_state_broadcaster</exec_depend>
   <exec_depend>rviz2</exec_depend>
   <!-- Xacro used to simplify building URDF files  -->
   <!-- More details here: https://wiki.ros.org/xacro -->
