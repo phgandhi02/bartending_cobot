@@ -34,6 +34,9 @@
   <!-- ros2_control node for managing controllers -->
   <!-- Brief explanation here: https://control.ros.org/jazzy/doc/getting_started/getting_started.html#controller-manager -->
   <exec_depend>controller_manager</exec_depend>
+  <!-- ros_gz_bridge for enabling communication between ros2 and gazebo -->
+  <!-- Basic usage doc: https://gazebosim.org/docs/latest/ros2_integration/ -->
+  <exec_depend>ros_gz_bridge</exec_depend>
   <exec_depend>rviz2</exec_depend>
   <!-- Xacro used to simplify building URDF files  -->
   <!-- More details here: https://wiki.ros.org/xacro -->
