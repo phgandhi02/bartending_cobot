@@ -38,6 +38,11 @@ rosdep install --from-paths src -y --ignore-src
 colcon build --symlink
 ```
 
+## Usage
+
+
+
+
 ### Github Actions
 This repo implements various github actions to ensure a smooth CI/CD process and enable faster prototyping. The actions implemented are described below:
 - [pylint.yaml](.github/workflows/pylint.yml) workflow: This action is designed to ensure that code is the highest quality. It will find all the python files in the repo and then produce a lint.txt as an artifact which can be downloaded from Github.
