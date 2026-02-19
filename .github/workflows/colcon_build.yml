@@ -19,10 +19,14 @@ on:
     branches:
       - main
       - dev
+    paths:
+      - 'src/**'
   pull_request:
     branches:
       - main
       - dev
+    paths:
+      - 'src/**'
 
 jobs:
   build_and_test_ros2:
