@@ -1,0 +1,12 @@
+# - Config file for the bartending_cobot_bringup package
+# It defines the following variables
+#  bartending_cobot_bringup_INCLUDE_DIRS - include directories for FooBar
+#  bartending_cobot_bringup_LIBRARIES    - libraries to link against
+#  bartending_cobot_bringup_EXECUTABLE   - the bar executable
+
+set(bartending_cobot_bringup_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+include("${bartending_cobot_bringup_DIR}/export_bartending_cobot_bringup.cmake")
+
+# These are IMPORTED targets created by bartending_cobot_bringupTargets.cmake

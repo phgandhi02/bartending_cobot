@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>manipulator_bringup</name>
+  <name>bartending_cobot_bringup</name>
   <version>0.0.0</version>
   <description>Demo using ros2_control and Gazebo simulation with 6Dof Manipulator.</description>
 
   <maintainer email="phgandh2@ncsu.edu">Prem Gandhi</maintainer>
-  <maintainer email="ljimenez@ennovatec.co">Luis Jimenez</maintainer>
 
   <license>MIT</license>
 
@@ -68,10 +67,10 @@
   <!-- Code available here: https://github.com/ros-controls/ros2_controllers/tree/jazzy/ros2_controllers_test_nodes -->
   <!-- <exec_depend>ros2_controllers_test_nodes</exec_depend> -->
 
-  <!-- 
+  <!--
     Publishes joint_state from robot description and presents on GUI for easy reading and
-    controlling using sliders joint_state_broadcaster reads from state_interfaces and 
-    updates the joint_states while joint_state_publisher reads and updates the 
+    controlling using sliders joint_state_broadcaster reads from state_interfaces and
+    updates the joint_states while joint_state_publisher reads and updates the
     robot_description topic.
   -->
   <!-- More details for joint_state_publisher and joint_state_publisher_gui: https://wiki.ros.org/joint_state_publisher -->
