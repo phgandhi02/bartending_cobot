@@ -1,22 +1,26 @@
 # Bartending Cobot
-A 6dof robot manipulator + end-effector (e.g. 7dof) controlled using ROS2 Jazzy on Ubuntu 24.04.
+A 6dof robot manipulator + end-effector (e.g. 7dof) controlled using ROS2 Jazzy on Ubuntu 24.04. The robot will be simulated using Gazebo Harmonic. 
 
 ## Table of Contents
 - [Bartending Cobot](#bartending-cobot)
   - [Table of Contents](#table-of-contents)
+  - [Project Description](#project-description)
   - [Install](#install)
     - [Dependencies](#dependencies)
+    - [Build](#build)
+  - [Usage](#usage)
+  - [Dev Notes](#dev-notes)
+    - [Dev Dependencies](#dev-dependencies)
     - [Github Actions](#github-actions)
     - [How to use Git for this project:](#how-to-use-git-for-this-project)
-  - [Dev Notes](#dev-notes)
-    - [Development Milestones](#development-milestones)
-    - [Dependencies](#dependencies-1)
+
+## Project Description
 
 
 ## Install
 
 ### Dependencies
-The following pre-requisites are necessary to run and develop the visualization tool:
+The following pre-requisites are necessary to run program for the bartending cobot:
 - [ROS2 Jazzy](https://docs.ros.org/en/jazzy/Installation.html)
   - Ensure `colcon` is installed and set up.
   - Ensure rviz2 is installed: `sudo apt install ros-jazzy-rviz2`
