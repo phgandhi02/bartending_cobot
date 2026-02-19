@@ -1,6 +1,18 @@
 name: pylint
 
-on: [push,pull_request]
+on: 
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - 'src/**'
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - 'src/**'
 
 jobs:
   build:
