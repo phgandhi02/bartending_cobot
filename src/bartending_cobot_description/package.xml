@@ -3,16 +3,14 @@
 <package format="3">
   <name>bartending_cobot_description</name>
   <version>0.0.0</version>
-  <description>Package with URDF and description files of test robots.</description>
-
-  <maintainer email="phgandh2@ncsu.edu">Prem Gandhi</maintainer>
-  <maintainer email="ljimenez@ennovatec.co">Luis Jimenez</maintainer>
-
-  <license>MIT</license>
+  <description>package containing the URDF and Xacro description of the 6dof robot manipulator with end effector</description>
+  <maintainer email="phgandhi02@gmail.com">prem</maintainer>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <exec_depend>rviz2</exec_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
