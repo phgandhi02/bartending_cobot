@@ -93,5 +93,10 @@ def generate_launch_description():
             #                  '/remapped_imu_topic'),],
             #     output='screen'
             # ),
+            Node(
+                package="joint_state_publisher_gui",
+                executable="joint_state_publisher_gui",
+                output="screen",
+            ),
         ]
     )
