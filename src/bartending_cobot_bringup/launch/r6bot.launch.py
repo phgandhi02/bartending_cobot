@@ -35,8 +35,22 @@ def generate_launch_description():
         [ur_description_path_share, "launch", "view_ur.launch.py"]
     )
 
-    return LaunchDescription(
-        [
+    # launch_ur_description = IncludeLaunchDescription(
+    #     launch_description_source=PythonLaunchDescriptionSource(
+    #         ur_description_launch_path
+    #     ),
+    #     launch_arguments={"ur_type": "ur5e"}.items(),
+    # )
+
+    robot_description = Node(
+            package='robot_state_publisher',
+            executable='robot_state_publisher',
+            output='screen',
+            parameters=[{
+                'use_sim_time': True,
+            }],
+            arguments=["/home/prem/code/bartending_cobot/src/bartending_cobot_description/urdf/bartending_cobot.xacro.urdf"]
+        )
             DeclareLaunchArgument(
                 "ur_type",
                 default_value="ur5e",
