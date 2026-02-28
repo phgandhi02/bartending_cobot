@@ -35,10 +35,10 @@ def generate_launch_description():
     )
 
     bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
-        output='screen'
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
+        output="screen",
     )
 
     gz_spawn_robot = Node(
@@ -50,12 +50,12 @@ def generate_launch_description():
     joint_state_broadcaster_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"]
+        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
     )
     r6bot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["r6bot_controller", "--controller-manager", "/controller_manager"]
+        arguments=["r6bot_controller", "--controller-manager", "/controller_manager"],
     )
 
     # launch_ur_description = IncludeLaunchDescription(
@@ -66,23 +66,31 @@ def generate_launch_description():
     # )
 
     robot_description = Node(
-            package='robot_state_publisher',
-            executable='robot_state_publisher',
-            output='screen',
-            parameters=[{
-                'use_sim_time': True,
-            }],
-            arguments=["/home/prem/code/bartending_cobot/src/bartending_cobot_description/urdf/bartending_cobot.xacro.urdf"]
-        )
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        output="screen",
+        parameters=[
+            {
+                "use_sim_time": True,
+            }
+        ],
+        arguments=[
+            "/home/prem/code/bartending_cobot/src/bartending_cobot_description/urdf/bartending_cobot.xacro.urdf"
+        ],
+    )
     ld = LaunchDescription(
         [
             # Launch gazebo environment
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(
-                    [PathJoinSubstitution([FindPackageShare('ros_gz_sim'),
-                                            'launch',
-                                            'gz_sim.launch.py'])]),
-                launch_arguments=[('gz_args', [' -r -v 1 empty.sdf'])]),
+                    [
+                        PathJoinSubstitution(
+                            [FindPackageShare("ros_gz_sim"), "launch", "gz_sim.launch.py"]
+                        )
+                    ]
+                ),
+                launch_arguments=[("gz_args", [" -r -v 1 empty.sdf"])],
+            ),
             # make sure ur_description launch started and then robot is spawned in gazebo
             RegisterEventHandler(
                 event_handler=OnProcessStart(
@@ -120,12 +128,12 @@ def generate_launch_description():
                 "GZ_SIM_RESOURCE_PATH", PathJoinSubstitution([ur_description_path_prefix, "share"])
             ),
             SetEnvironmentVariable(
-                'GZ_SIM_PLUGIN_PATH',
-                "/opt/ros/jazzy/lib/libgz_ros2_control-system.so" #PathJoinSubstitution(["/opt","ros","jazzy","lib/"])
+                "GZ_SIM_PLUGIN_PATH",
+                "/opt/ros/jazzy/lib/libgz_ros2_control-system.so",  # PathJoinSubstitution(["/opt","ros","jazzy","lib/"])
             ),
             SetEnvironmentVariable(
                 "GAZEBO_MODEL_PATH", PathJoinSubstitution([ur_description_path_prefix, "share"])
-            )
+            ),
         ]
     )
 
