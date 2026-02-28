@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 10  # Hz
+    update_rate: 1000  # Hz
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -12,7 +12,6 @@ controller_manager:
 
 r6bot_controller:
   ros__parameters:
-    type: ros2_control_demo_example_7/RobotController
     joints:
       - shoulder_pan_joint
       - shoulder_lift_joint
