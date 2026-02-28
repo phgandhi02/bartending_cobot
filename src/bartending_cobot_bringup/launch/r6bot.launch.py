@@ -15,6 +15,8 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import SetEnvironmentVariable, IncludeLaunchDescription, DeclareLaunchArgument
+from launch.actions import RegisterEventHandler
+from launch.event_handlers import OnProcessExit, OnProcessStart
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
 from launch_ros.substitutions import FindPackageShare, FindPackagePrefix
@@ -25,20 +27,93 @@ def generate_launch_description():
     ur_type = LaunchConfiguration("ur_type")
     world_file = LaunchConfiguration("world_file")
 
-    ros_gz_sim_pkg_path = FindPackageShare("ros_gz_sim")
-
     ur_description_path_share = FindPackageShare("ur_description")
     ur_description_path_prefix = FindPackagePrefix("ur_description")
-    gz_launch_path = PathJoinSubstitution([ros_gz_sim_pkg_path, "launch", "gz_sim.launch.py"])
-    # gz_model_launch_path = PathJoinSubstitution(
-    #     [ros_gz_sim_pkg_path, "launch", "gz_spawn_model.launch.py"]
-    # )
+
     ur_description_launch_path = PathJoinSubstitution(
         [ur_description_path_share, "launch", "view_ur.launch.py"]
     )
 
-    return LaunchDescription(
+    bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
+        output="screen",
+    )
+
+    gz_spawn_robot = Node(
+        package="ros_gz_sim",
+        executable="create",
+        arguments=["-topic", "robot_description"],
+    )
+
+    joint_state_broadcaster_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+    )
+    r6bot_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["r6bot_controller", "--controller-manager", "/controller_manager"],
+    )
+
+    # launch_ur_description = IncludeLaunchDescription(
+    #     launch_description_source=PythonLaunchDescriptionSource(
+    #         ur_description_launch_path
+    #     ),
+    #     launch_arguments={"ur_type": "ur5e"}.items(),
+    # )
+
+    robot_description = Node(
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        output="screen",
+        parameters=[
+            {
+                "use_sim_time": True,
+            }
+        ],
+        arguments=[
+            "/home/prem/code/bartending_cobot/src/bartending_cobot_description/urdf/bartending_cobot.xacro.urdf"
+        ],
+    )
+    ld = LaunchDescription(
         [
+            # Launch gazebo environment
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    [
+                        PathJoinSubstitution(
+                            [FindPackageShare("ros_gz_sim"), "launch", "gz_sim.launch.py"]
+                        )
+                    ]
+                ),
+                launch_arguments=[("gz_args", [" -r -v 1 empty.sdf"])],
+            ),
+            # make sure ur_description launch started and then robot is spawned in gazebo
+            RegisterEventHandler(
+                event_handler=OnProcessStart(
+                    target_action=robot_description,
+                    on_start=[gz_spawn_robot],
+                )
+            ),
+            # make sure robot is spawned and then joint_state_broadcaster is started
+            RegisterEventHandler(
+                event_handler=OnProcessExit(
+                    target_action=gz_spawn_robot,
+                    on_exit=[joint_state_broadcaster_controller_spawner],
+                )
+            ),
+            # make sure r6bot controller started after joint_state_broadcaster controller
+            RegisterEventHandler(
+                event_handler=OnProcessExit(
+                    target_action=joint_state_broadcaster_controller_spawner,
+                    on_exit=[r6bot_controller_spawner],
+                )
+            ),
+            bridge,
+            robot_description,
             DeclareLaunchArgument(
                 "ur_type",
                 default_value="ur5e",
@@ -52,46 +127,14 @@ def generate_launch_description():
             SetEnvironmentVariable(
                 "GZ_SIM_RESOURCE_PATH", PathJoinSubstitution([ur_description_path_prefix, "share"])
             ),
-            # SetEnvironmentVariable(
-            #     'GZ_SIM_PLUGIN_PATH',
-            #     PathJoinSubstitution([ur_description_mesh_path])
-            # ),
+            SetEnvironmentVariable(
+                "GZ_SIM_PLUGIN_PATH",
+                "/opt/ros/jazzy/lib/libgz_ros2_control-system.so",  # PathJoinSubstitution(["/opt","ros","jazzy","lib/"])
+            ),
             SetEnvironmentVariable(
                 "GAZEBO_MODEL_PATH", PathJoinSubstitution([ur_description_path_prefix, "share"])
             ),
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(gz_launch_path),
-                launch_arguments={
-                    # Replace with your own world file
-                    "gz_args": [world_file],
-                    "on_exit_shutdown": "True",
-                }.items(),  # type: ignore
-            ),
-            IncludeLaunchDescription(
-                launch_description_source=PythonLaunchDescriptionSource(
-                    ur_description_launch_path
-                ),
-                launch_arguments={"ur_type": ur_type}.items(),
-            ),
-            Node(
-                package="ros_gz_sim",
-                executable="create",
-                arguments=["-topic", "robot_description"],
-            ),
-            # IncludeLaunchDescription(
-            #     launch_description_source=PythonLaunchDescriptionSource(gz_model_launch_path),
-            #     launch_arguments={
-            #         'world': 'empty'
-            #     }.items()
-            # ),
-            # # Bridging and remapping Gazebo topics to ROS 2 (replace with your own topics)
-            # Node(
-            #     package='ros_gz_bridge',
-            #     executable='parameter_bridge',
-            #     arguments=['/example_imu_topic@sensor_msgs/msg/Imu@gz.msgs.IMU',],
-            #     remappings=[('/example_imu_topic',
-            #                  '/remapped_imu_topic'),],
-            #     output='screen'
-            # ),
         ]
     )
+
+    return ld
