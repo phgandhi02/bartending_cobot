@@ -13,22 +13,6 @@
   <author email="ljimenez@ennovatec.co">Luis Jimenez</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <!-- ros2_control_cmake dep simplifies CMakeLists.txt by providing CMake macros -->
-   <!-- More details here: https://github.com/ros-controls/ros2_control_cmake -->
-  <build_depend>ros2_control_cmake</build_depend>
-
-  <!-- backward_ros is a stack trace pretty printer for C++ -->
-  <!-- More details can be found here: https://github.com/bombela/backward-cpp -->
-  <depend>backward_ros</depend>
-  <!-- hardware_interface, pluginlib, rclcpp, and rclcpp_lifecylce are dependencies
-    required for writing a hardware interface
-    Check the following link for more details:
-    https://control.ros.org/master/doc/ros2_control/hardware_interface/doc/writing_new_hardware_component.html
-  -->
-  <depend>hardware_interface</depend>
-  <depend>pluginlib</depend>
-  <depend>rclcpp</depend>
-  <depend>rclcpp_lifecycle</depend>
 
   <!-- ros2_control node for managing controllers -->
   <!-- Brief explanation here: https://control.ros.org/jazzy/doc/getting_started/getting_started.html#controller-manager -->
@@ -49,32 +33,20 @@
   and publishes the 3D poses of the robot links on the /tf topic, using a kinematic tree model
   of the robot -->
   <exec_depend>robot_state_publisher</exec_depend>
-  <!-- ros2controlcli provides CLI commands for managing ros2_control controllers -->
-  <!-- Detailed usage here: https://control.ros.org/master/doc/ros2_control/ros2controlcli/doc/userdoc.html -->
-  <exec_depend>ros2controlcli</exec_depend>
-  <exec_depend>rviz2</exec_depend>
-  <!-- Xacro used to simplify building URDF files  -->
-  <!-- More details here: https://wiki.ros.org/xacro -->
-  <exec_depend>xacro</exec_depend>
   <!-- Pkg used for running launch files from CLI -->
   <exec_depend>ros2launch</exec_depend>
+  <exec_depend>rqt_joint_trajectory_controller</exec_depend>
+  <!-- Using meshes and other model assets from the ur_description package in 
+  combination with custom URDF in bartending_cobot_description file -->
+  <exec_depend>ur_description</exec_depend>
+  <exec_depend>rviz2</exec_depend>
 
-  <!-- Not currently used. forward_command_controller for implementing ros2_control controller on grippers.  -->
-  <!-- User doc here: https://github.com/ros-controls/ros2_controllers/blob/jazzy/forward_command_controller/doc/userdoc.rst -->
-  <!-- <exec_depend>forward_command_controller</exec_depend> -->
+  
+  <test_depend>bartending_cobot_description</test_depend>
+  <!-- ros2controlcli provides CLI commands for managing ros2_control controllers -->
+  <!-- Detailed usage here: https://control.ros.org/master/doc/ros2_control/ros2controlcli/doc/userdoc.html -->
+  <test_depend>ros2controlcli</test_depend>
 
-  <!-- pkg for testing the ros2_controllers for correct, working output  -->
-  <!-- Code available here: https://github.com/ros-controls/ros2_controllers/tree/jazzy/ros2_controllers_test_nodes -->
-  <!-- <exec_depend>ros2_controllers_test_nodes</exec_depend> -->
-
-  <!--
-    Publishes joint_state from robot description and presents on GUI for easy reading and
-    controlling using sliders joint_state_broadcaster reads from state_interfaces and
-    updates the joint_states while joint_state_publisher reads and updates the
-    robot_description topic.
-  -->
-  <!-- More details for joint_state_publisher and joint_state_publisher_gui: https://wiki.ros.org/joint_state_publisher -->
-  <!-- <exec_depend>joint_state_publisher_gui</exec_depend> -->
   <export>
     <build_type>ament_cmake</build_type>
   </export>

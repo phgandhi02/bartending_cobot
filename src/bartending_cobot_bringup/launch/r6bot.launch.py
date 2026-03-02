@@ -58,13 +58,6 @@ def generate_launch_description():
         arguments=["r6bot_controller", "--controller-manager", "/controller_manager"],
     )
 
-    # launch_ur_description = IncludeLaunchDescription(
-    #     launch_description_source=PythonLaunchDescriptionSource(
-    #         ur_description_launch_path
-    #     ),
-    #     launch_arguments={"ur_type": "ur5e"}.items(),
-    # )
-
     robot_description = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
