@@ -1,9 +1,9 @@
 # TODO
 
 - [x] update README [usage section](README.md#usage).
-- [ ] Implement environment tests to ensure that the development environment is correctly configured.
-  - [ ] Gazebo Harmonic: Is the simulator available?
-  - [ ] ros2_control: Are the necessary controllers present?
+- [x] Implement environment tests to ensure that the development environment is correctly configured.
+  - [x] Gazebo Harmonic: Is the simulator available?
+  - [x] ros2_control: Are the necessary controllers present?
 - [ ] Develop CI/CD pipelines for automated testing and deployment.
   - [x] `colcon build` test
   - [ ] Unit tests for each package
